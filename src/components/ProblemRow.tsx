@@ -20,6 +20,8 @@ interface Problem {
 
 interface ProblemRowProps {
   problem: Problem;
+  status: StatusType;
+  onStatusChange: (problemId: number, status: StatusType) => void;
 }
 
 const statusLabels: Record<StatusType, string> = {
@@ -40,8 +42,7 @@ const statusColors: Record<StatusType, string> = {
   ce: "bg-status-tle",
 };
 
-export const ProblemRow = ({ problem }: ProblemRowProps) => {
-  const [status, setStatus] = useState<StatusType>("pending");
+export const ProblemRow = ({ problem, status, onStatusChange }: ProblemRowProps) => {
 
   return (
     <div
@@ -59,22 +60,22 @@ export const ProblemRow = ({ problem }: ProblemRowProps) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="bg-popover">
-          <DropdownMenuItem onClick={() => setStatus("pending")}>
+          <DropdownMenuItem onClick={() => onStatusChange(problem.id, "pending")}>
             {statusLabels.pending}
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setStatus("accepted")}>
+          <DropdownMenuItem onClick={() => onStatusChange(problem.id, "accepted")}>
             {statusLabels.accepted}
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setStatus("wa")}>
+          <DropdownMenuItem onClick={() => onStatusChange(problem.id, "wa")}>
             {statusLabels.wa}
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setStatus("tle")}>
+          <DropdownMenuItem onClick={() => onStatusChange(problem.id, "tle")}>
             {statusLabels.tle}
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setStatus("rte")}>
+          <DropdownMenuItem onClick={() => onStatusChange(problem.id, "rte")}>
             {statusLabels.rte}
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setStatus("ce")}>
+          <DropdownMenuItem onClick={() => onStatusChange(problem.id, "ce")}>
             {statusLabels.ce}
           </DropdownMenuItem>
         </DropdownMenuContent>
