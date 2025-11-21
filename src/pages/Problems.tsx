@@ -77,9 +77,21 @@ const Problems = () => {
     sortBy: "id",
     sources: [],
   });
+  
+  const [problemStatuses, setProblemStatuses] = useState<Record<number, string>>({});
+
+  const handleStatusChange = (problemId: number, status: string) => {
+    setProblemStatuses((prev) => ({
+      ...prev,
+      [problemId]: status,
+    }));
+  };
 
   // Apply filters and sorting
   const filteredProblems = problemsData.filter((problem) => {
+    if (filters.hideAccepted && problemStatuses[problem.id] === "accepted") {
+      return false;
+    }
     if (filters.sources.length > 0 && !filters.sources.includes(problem.source)) {
       return false;
     }
@@ -108,7 +120,12 @@ const Problems = () => {
           <h1 className="text-3xl font-bold mb-6">Problems</h1>
           <div className="space-y-2">
             {sortedProblems.map((problem) => (
-              <ProblemRow key={problem.id} problem={problem} />
+              <ProblemRow 
+                key={problem.id} 
+                problem={problem}
+                status={(problemStatuses[problem.id] as any) || "pending"}
+                onStatusChange={handleStatusChange}
+              />
             ))}
           </div>
         </main>
