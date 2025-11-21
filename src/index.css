@@ -41,6 +41,11 @@ All colors MUST be HSL.
     --table-header: 217 28% 11%;
     --table-row: 217 28% 9%;
     --table-row-hover: 217 28% 12%;
+    
+    --status-accepted: 142 76% 36%;
+    --status-wa: 0 84% 60%;
+    --status-tle: 45 93% 47%;
+    --status-pending: 217 28% 15%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -91,6 +96,12 @@ All colors MUST be HSL.
     --table-header: 217 28% 11%;
     --table-row: 217 28% 9%;
     --table-row-hover: 217 28% 12%;
+    
+    --status-accepted: 142 76% 36%;
+    --status-wa: 0 84% 60%;
+    --status-tle: 45 93% 47%;
+    --status-pending: 217 28% 15%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

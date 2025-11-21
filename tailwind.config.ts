@@ -62,6 +62,12 @@ export default {
           row: "hsl(var(--table-row))",
           "row-hover": "hsl(var(--table-row-hover))",
         },
+        status: {
+          accepted: "hsl(var(--status-accepted))",
+          wa: "hsl(var(--status-wa))",
+          tle: "hsl(var(--status-tle))",
+          pending: "hsl(var(--status-pending))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
